@@ -1,0 +1,17 @@
+body {
+  background-color: #efefef;
+  font-family: sans-serif;
+  padding: 40px;
+}
+
+#content {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0 0 20px;
+}
