@@ -48,9 +48,12 @@
     events: {
       'click h3 > a': function(e) {
         return this.parent.renderForm($(e.target).data('project-id'));
+      },
+      'click .js-show-description': function(e) {
+        return $(e.target).closest('li').find('.js-description-toggle').toggle();
       }
     },
-    template: _.template("<ul class='projects'>\n  <% projects.each(function(project){ %>\n    <li>\n      <h3><a href='#' data-project-id=\"<%= project.cid %>\"><%= project.get('name') %></a></h3>\n      <p><%= project.get('description') || 'No description' %></p>\n    </li>\n  <% }) %>\n</ul>"),
+    template: _.template("<ul class='projects'>\n  <% projects.each(function(project){ %>\n    <li>\n      <h3><a href='#' data-project-id=\"<%= project.cid %>\"><%= project.get('name') %></a></h3>\n      <small class='js-description-toggle'><a href='#' class='js-show-description'>Show description</a></small>\n      <div style='display:none;' class='js-description-toggle'><%= project.get('description') || 'No description' %></div>\n    </li>\n  <% }) %>\n</ul>"),
     initialize: function(options) {
       return this.parent = options.parent, options;
     },

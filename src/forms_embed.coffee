@@ -32,12 +32,16 @@ ProjectsView = Backbone.View.extend
     'click h3 > a': (e) ->
       @parent.renderForm($(e.target).data('project-id'))
 
+    'click .js-show-description': (e) ->
+      $(e.target).closest('li').find('.js-description-toggle').toggle()
+
   template: _.template """
     <ul class='projects'>
       <% projects.each(function(project){ %>
         <li>
           <h3><a href='#' data-project-id="<%= project.cid %>"><%= project.get('name') %></a></h3>
-          <p><%= project.get('description') || 'No description' %></p>
+          <small class='js-description-toggle'><a href='#' class='js-show-description'>Show description</a></small>
+          <div style='display:none;' class='js-description-toggle'><%= project.get('description') || 'No description' %></div>
         </li>
       <% }) %>
     </ul>
